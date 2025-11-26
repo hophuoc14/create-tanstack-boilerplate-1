@@ -1,0 +1,41 @@
+{
+  "name": "create-tanstack-boilerplate",
+  "version": "1.0.7",
+  "description": "The ultimate CLI to scaffold production-ready TanStack Start applications. Features interactive setup for Vite, React 19, TailwindCSS, i18n, Auth, and more. Get started with a scalable full-stack React framework in seconds.",
+  "keywords": [
+    "tanstack",
+    "tanstack-start",
+    "react",
+    "react-router",
+    "vite",
+    "boilerplate",
+    "scaffold",
+    "cli",
+    "create-app",
+    "starter",
+    "template",
+    "typescript",
+    "tailwindcss",
+    "ssr",
+    "server-side-rendering",
+    "full-stack"
+  ],
+  "type": "module",
+  "bin": {
+    "create-tanstack-boilerplate": "./index.js"
+  },
+  "scripts": {
+    "test": "node index.js"
+  },
+
+  "author": "Phuoc",
+  "license": "MIT",
+  "dependencies": {
+    "prompts": "^2.4.2",
+    "picocolors": "^1.1.1",
+    "kolorist": "^1.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

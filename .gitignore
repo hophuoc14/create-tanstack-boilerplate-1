@@ -1,0 +1,56 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnp/
+.pnp.js
+
+# Build / output
+dist/
+build/
+out/
+.cache/
+.vite/
+.next/
+.parcel-cache/
+.serverless/
+.vercel/
+coverage/
+.nyc_output/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*~.nib
+
+# Python (if present)
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+venv/
+pip-wheel-metadata/
+
+# Docker / Compose local overrides
+docker-compose.override.yml
+
+# Misc
+*.local
+*.bak
