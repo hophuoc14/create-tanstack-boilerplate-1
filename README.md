@@ -1,6 +1,6 @@
 # 🚀 Create TanStack Boilerplate
 
-A fast, production-ready CLI to scaffold TanStack Start applications (React + Vite + TypeScript + Tailwind). Use this tool to generate opinionated, scalable starters with optional i18n, auth, UI, and testing presets — perfect for teams and projects that need a solid default stack.
+A fast, production-ready CLI to scaffold [TanStack Start](https://tanstack.com/start/latest) applications (React + Vite + TypeScript + Tailwind). Use this tool to generate opinionated, scalable starters with optional i18n, auth, UI, and testing presets — perfect for teams and projects that need a solid default stack.
 
 [![npm version](https://img.shields.io/npm/v/create-tanstack-boilerplate.svg)](https://www.npmjs.com/package/create-tanstack-boilerplate) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Issues](https://img.shields.io/github/issues/phuocAnonydev14/create-tanstack-boilerplate)](https://github.com/phuocAnonydev14/create-tanstack-boilerplate/issues)
 
@@ -9,7 +9,7 @@ A fast, production-ready CLI to scaffold TanStack Start applications (React + Vi
 ✨ **Interactive Setup** - Answer a few questions and get a fully configured project  
 🎨 **UI Components** - Optional Radix UI + Tailwind CSS + shadcn/ui integration  
 🌍 **Internationalization** - Multi-language support with Inlang/Paraglide  
-⚡ **State Management** - Optional Jotai for atomic state  
+⚡ **State Management** - Optional Jotai or Zustand  
 🔐 **Authentication** - Google OAuth ready  
 🎭 **Animations** - Framer Motion support  
 ✅ **Testing** - Vitest + Testing Library setup  
@@ -19,10 +19,8 @@ A fast, production-ready CLI to scaffold TanStack Start applications (React + Vi
 
 - **[Quick Start Guide](QUICKSTART.md)** - Get started in 2 minutes
 - **[Examples & Patterns](EXAMPLES.md)** - Common use cases and code examples
-- **[Publishing Guide](PUBLISHING.md)** - How to publish to npm
 - **[Contributing](CONTRIBUTING.md)** - Contribution guidelines
 - **[Testing Guide](TESTING.md)** - How to test the CLI
-- **[Project Summary](PROJECT_SUMMARY.md)** - Complete overview
 - **[Changelog](CHANGELOG.md)** - Version history
 
 ## 🚀 Quick Start
@@ -142,9 +140,7 @@ See [TESTING.md](TESTING.md) for comprehensive testing guide.
 
 ### Publishing
 
-See [PUBLISHING.md](PUBLISHING.md) for step-by-step publishing instructions.
-
-Quick publish:
+Quick publish (for maintainers):
 ```bash
 npm login
 npm publish
@@ -172,13 +168,6 @@ Built with ❤️ using:
 - [TanStack Start](https://tanstack.com/start)
 - [Prompts](https://github.com/terkelg/prompts)
 - [Kolorist](https://github.com/marvinhagemeister/kolorist)
-
-## 🔗 Links
-
-- [NPM Package](https://www.npmjs.com/package/create-tanstack-boilerplate)
-- [GitHub Repository](https://github.com/yourusername/create-tanstack-boilerplate)
-- [Issue Tracker](https://github.com/yourusername/create-tanstack-boilerplate/issues)
-- [TanStack Start Docs](https://tanstack.com/start)
 
 ## 📊 Stats
 

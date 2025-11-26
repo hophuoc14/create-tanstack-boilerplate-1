@@ -40,8 +40,8 @@ const FEATURES = {
   },
   state: {
     name: "State Management",
-    description: "Jotai for atomic state management",
-    packages: ["jotai"],
+    description: "Choose Jotai or Zustand for state management",
+    packages: [],
     devPackages: [],
   },
   auth: {
@@ -121,6 +121,21 @@ async function init() {
         },
         {
           type: (prev, values) =>
+            values.features.includes("state") ? "multiselect" : null,
+          name: "stateLibs",
+          message: "Select state management library:",
+          choices: [
+            { title: "Jotai", value: "jotai", selected: true },
+            { title: "Zustand", value: "zustand" },
+          ],
+          hint: "- Space to select. Return to submit",
+          validate: (value) =>
+            !value || value.length === 0
+              ? "Please select at least one state library"
+              : true,
+        },
+        {
+          type: (prev, values) =>
             values.features.includes("i18n") ? "multiselect" : null,
           name: "languages",
           message: "Select languages to support:",
@@ -182,6 +197,7 @@ async function init() {
     languages = ["en"],
     baseLocale = "en",
     initGit,
+    stateLibs = ["jotai"],
   } = result;
 
   const root = path.join(process.cwd(), projectName);
@@ -202,6 +218,7 @@ async function init() {
     projectName,
     features,
     packageManager,
+    stateLibs,
   );
   fs.writeFileSync(
     path.join(root, "package.json"),
@@ -221,7 +238,7 @@ async function init() {
   }
 
   if (features.includes("state")) {
-    createStateSetup(root);
+    createStateSetup(root, stateLibs);
   }
 
   if (features.includes("auth")) {
@@ -267,7 +284,7 @@ async function init() {
   }
 }
 
-function generatePackageJson(name, features, packageManager) {
+function generatePackageJson(name, features, packageManager, stateLibs = ["jotai"]) {
   const pkg = {
     name,
     private: true,
@@ -310,6 +327,15 @@ function generatePackageJson(name, features, packageManager) {
       });
     }
   });
+
+  if (features.includes("state")) {
+    if (stateLibs.includes("jotai")) {
+      pkg.dependencies["jotai"] = "latest";
+    }
+    if (stateLibs.includes("zustand")) {
+      pkg.dependencies["zustand"] = "latest";
+    }
+  }
 
   // Add feature-specific scripts
   if (features.includes("i18n")) {
@@ -480,16 +506,38 @@ export function cn(...inputs: ClassValue[]) {
   );
 }
 
-function createStateSetup(root) {
+function createStateSetup(root, stateLibs = ["jotai"]) {
   fs.mkdirSync(path.join(root, "src/store"), { recursive: true });
-  fs.writeFileSync(
-    path.join(root, "src/store/index.ts"),
-    `import { atom } from 'jotai'
 
-// Example atom
+  if (stateLibs.includes("jotai")) {
+    fs.writeFileSync(
+      path.join(root, "src/store/jotaiStore.ts"),
+      `import { atom } from 'jotai'
+
 export const countAtom = atom(0)
 `,
-  );
+    );
+  }
+
+  if (stateLibs.includes("zustand")) {
+    fs.writeFileSync(
+      path.join(root, "src/store/zustandStore.ts"),
+      `import { create } from 'zustand'
+
+type CounterState = {
+  count: number
+  increment: () => void
+  decrement: () => void
+}
+
+export const useCounterStore = create<CounterState>((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+}))
+`,
+    );
+  }
 }
 
 function createAuthSetup(root) {
